@@ -1,22 +1,10 @@
 :root {
   --bg: #f5e3ee;
-  --bg-strong: #f2dbe8;
-  --panel: #f9eef4;
-  --panel-alt: #f6ebf2;
-  --card: #f6ebf3;
-  --card-soft: #f3dfe8;
   --deep-purple: #2e2338;
-  --purple: #4b3047;
-  --purple-soft: #d9bbd4;
   --text: #2f1e2e;
-  --muted: #7d6977;
-  --line: rgba(67, 42, 54, 0.12);
-  --shadow: rgba(48, 30, 44, 0.08);
-  --button-dark: #2b1f2d;
   --button-pink: #f0d5e8;
   --white: #fff;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -178,8 +166,7 @@ button.ghost {
   padding: 10px 0;
 }
 
-.eyebrow,
-.section-kicker {
+.eyebrow {
   display: inline-block;
   margin-bottom: 20px;
   font-size: 0.72rem;
@@ -359,10 +346,6 @@ button.ghost {
   font-size: 0.75rem;
 }
 
-.section-kicker {
-  margin-bottom: 0;
-}
-
 .section-link {
   font-size: 0.74rem;
   color: rgba(47, 30, 46, 0.7);
@@ -417,12 +400,36 @@ button.ghost {
 
 .article-grid-three {
   grid-template-columns: repeat(3, minmax(250px, 1fr));
+  overflow-x: clip;
 }
 
 .article-card {
   background: transparent;
 }
 
+.has-scroll-animations .article-card .card-image {
+  opacity: 0;
+  transition:
+    opacity 900ms ease,
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-scroll-animations .article-card:nth-child(1) .card-image {
+  transform: translate3d(-105vw, 0, 0);
+}
+
+.has-scroll-animations .article-card:nth-child(2) .card-image {
+  transform: translate3d(0, 90px, 0);
+}
+
+.has-scroll-animations .article-card:nth-child(3) .card-image {
+  transform: translate3d(105vw, 0, 0);
+}
+
+.has-scroll-animations .article-card.is-visible .card-image {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
 .card-image {
   aspect-ratio: 416 / 248;
   border-radius: 12px;
@@ -463,6 +470,53 @@ button.ghost {
   font-weight: 400;
 }
 
+.article-title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.article-title-line > span {
+  display: block;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-scroll-animations .article-title-line > span {
+  transform: translateY(115%);
+}
+
+.has-scroll-animations .article-card .card-meta,
+.has-scroll-animations .article-card .article-byline {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 500ms ease,
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-scroll-animations .article-card.is-visible .card-meta,
+.has-scroll-animations .article-card.is-visible .article-byline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-scroll-animations .article-card.is-visible .card-meta {
+  transition-delay: 400ms;
+}
+
+.has-scroll-animations .article-card.is-visible .article-title-line:nth-child(1) > span {
+  transform: translateY(0);
+  transition-delay: 520ms;
+}
+
+.has-scroll-animations .article-card.is-visible .article-title-line:nth-child(2) > span {
+  transform: translateY(0);
+  transition-delay: 660ms;
+}
+
+.has-scroll-animations .article-card.is-visible .article-byline {
+  transition-delay: 780ms;
+}
+
 .article-byline {
   margin: 14px 0 0;
   color: #7c687d;
@@ -498,10 +552,35 @@ button.ghost {
 .art-grid {
   grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 32px;
+  overflow-x: clip;
 }
 
 .art-card {
   min-width: 0;
+}
+
+.has-scroll-animations .art-card .art-image {
+  opacity: 0;
+  transition:
+    opacity 900ms ease,
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-scroll-animations .art-card:nth-child(1) .art-image {
+  transform: translate3d(-105vw, 0, 0);
+}
+
+.has-scroll-animations .art-card:nth-child(2) .art-image {
+  transform: translate3d(0, 90px, 0);
+}
+
+.has-scroll-animations .art-card:nth-child(3) .art-image {
+  transform: translate3d(105vw, 0, 0);
+}
+
+.has-scroll-animations .art-card.is-visible .art-image {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .art-image {
@@ -509,6 +588,35 @@ button.ghost {
   border-radius: 8px;
   background-size: cover;
   background-position: center;
+}
+
+.has-scroll-animations .art-card .art-footer h4,
+.has-scroll-animations .art-card .art-footer div > span,
+.has-scroll-animations .art-card .art-arrow {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 500ms ease,
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-scroll-animations .art-card.is-visible .art-footer h4,
+.has-scroll-animations .art-card.is-visible .art-footer div > span,
+.has-scroll-animations .art-card.is-visible .art-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.has-scroll-animations .art-card.is-visible .art-footer h4 {
+  transition-delay: 400ms;
+}
+
+.has-scroll-animations .art-card.is-visible .art-footer div > span {
+  transition-delay: 540ms;
+}
+
+.has-scroll-animations .art-card.is-visible .art-arrow {
+  transition-delay: 600ms;
 }
 
 .art-1 {
@@ -554,125 +662,6 @@ button.ghost {
   color: #352238;
   font-size: 1.375rem;
   line-height: 1;
-}
-
-.arrow-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(54, 35, 44, 0.06);
-  color: var(--text);
-  flex-shrink: 0;
-}
-
-.mood-panel {
-  padding-top: 30px;
-}
-
-.playlist-shell {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 18px;
-  align-items: stretch;
-  padding-top: 12px;
-}
-
-.playlist-cover {
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(80, 58, 66, 0.08);
-  border-radius: 18px;
-  padding: 16px;
-}
-
-.cover-art {
-  width: 100%;
-  height: 100%;
-  min-height: 280px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(100, 70, 95, 0.3), rgba(215, 170, 205, 0.45)),
-    url("https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.playlist-list {
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(80, 58, 66, 0.08);
-  border-radius: 18px;
-  padding: 20px;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.meta-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(47, 30, 46, 0.58);
-}
-
-.track-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.track-row {
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 70px 42px;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 10px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-}
-
-.active-row {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(80, 58, 66, 0.08);
-}
-
-.track-index,
-.track-time {
-  color: rgba(47, 30, 46, 0.7);
-  font-size: 0.7rem;
-}
-
-.track-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.track-copy strong {
-  font-size: 0.94rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.track-copy span {
-  font-size: 0.68rem;
-  color: rgba(47, 30, 46, 0.56);
-}
-
-.play-button {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(48, 35, 46, 0.06);
-  color: var(--text);
-}
-
-.top-spacer {
-  margin-top: 22px;
 }
 
 .curiosity-grid {
@@ -907,35 +896,6 @@ button.ghost {
   line-height: 1;
 }
 
-.cta-panel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  margin-top: 34px;
-  padding: 28px 30px 24px;
-  background: linear-gradient(180deg, rgba(62, 35, 53, 0.95), rgba(44, 31, 39, 0.98));
-  border-radius: 22px;
-  color: #f4edf3;
-}
-
-.cta-panel h2 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(3rem, 4vw, 5rem);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  font-weight: 600;
-}
-
-.cta-panel p {
-  margin: 12px 0 0;
-  max-width: 560px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
 .site-footer {
   background: #352238;
   color: #fbe0f3;
@@ -1047,9 +1007,6 @@ button.ghost {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
 
-  .playlist-shell {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1060,8 +1017,7 @@ button.ghost {
   .section-head,
   .footer-cta,
   .footer-main,
-  .footer-bottom,
-  .cta-panel {
+  .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -1133,10 +1089,6 @@ button.ghost {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .cta-panel {
-    padding: 24px 18px;
   }
 
   .footer-inner {

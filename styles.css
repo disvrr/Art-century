@@ -117,19 +117,21 @@ button {
   gap: 12px;
 }
 
+a.primary,
 button.primary,
 button.secondary,
 button.ghost {
   border-radius: 999px;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
+a.primary:hover,
 button.primary:hover,
 button.secondary:hover,
 button.ghost:hover {
   transform: translateY(-1px);
 }
 
+a.primary,
 button.primary {
   background: var(--button-pink);
   padding: 0.95rem 1.5rem;
@@ -138,6 +140,7 @@ button.primary {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
+a.primary.small,
 button.primary.small,
 button.secondary.small,
 button.ghost.small {
@@ -515,6 +518,21 @@ button.ghost {
 
 .has-scroll-animations .article-card.is-visible .article-byline {
   transition-delay: 780ms;
+}
+.animated-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.animated-link:hover {
+  transform: translateY(-4px);
+}
+
+.animated-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 .article-byline {

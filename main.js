@@ -1,4 +1,6 @@
 const animatedCards = document.querySelectorAll(".article-card, .art-card");
+const topics = document.querySelectorAll(".Topics");
+
 
 if (
   animatedCards.length > 0 &&
@@ -21,3 +23,7 @@ if (
 
   animatedCards.forEach((card) => observer.observe(card));
 }
+
+
+
+

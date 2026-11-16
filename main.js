@@ -2,19 +2,19 @@ const animatedCards = document.querySelectorAll(".article-card, .art-card");
 const topics = document.querySelectorAll(".Topics");
 
 
-if (
-  animatedCards.length > 0 &&
+if (animatedCards.length > 0 &&
   "IntersectionObserver" in window &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+ {
   document.body.classList.add("has-scroll-animations");
 
   const observer = new IntersectionObserver(
-    (entries, currentObserver) => {
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          currentObserver.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove("is-visible");
         }
       });
     },
@@ -22,6 +22,8 @@ if (
   );
 
   animatedCards.forEach((card) => observer.observe(card));
+
+
 }
 
 

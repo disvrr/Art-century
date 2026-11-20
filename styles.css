@@ -328,7 +328,7 @@ button.ghost {
   font-size: 0.625rem;
 }
 
-.topic-item h3 {
+.topic-item h2 {
   margin: 0;
   color: #352238;
   font-family: "Cormorant Garamond", serif;
@@ -337,7 +337,7 @@ button.ghost {
   font-weight: 400;
 }
 
-.topic-item h3 span {
+.topic-item h2 span {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   vertical-align: 0.2em;
@@ -657,7 +657,7 @@ button.ghost {
   padding: 12px 0 0;
 }
 
-.art-footer h4 {
+.art-footer h3 {
   margin: 0;
   color: #352238;
   font-family: "Cormorant Garamond", serif;

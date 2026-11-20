@@ -3,8 +3,7 @@ const topics = document.querySelectorAll(".Topics");
 
 
 if (animatedCards.length > 0 &&
-  "IntersectionObserver" in window &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+  "IntersectionObserver" in window)
  {
   document.body.classList.add("has-scroll-animations");
 
